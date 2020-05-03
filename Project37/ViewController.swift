@@ -6,11 +6,24 @@
 //  Copyright © 2020 Dan. All rights reserved.
 //
 
+import AVFoundation //N1
 import UIKit
+import WatchConnectivity //P1
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate { //P3
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+    } // P4 applied via Precompiler fix...
+    
     @IBOutlet var cardContainer: UIView!
     @IBOutlet var gradientView: GradientView!
+    var music: AVAudioPlayer! //N2
+    var lastMessage: CFAbsoluteTime = 0 //P4
     
     
     //WTF when you delete something from a connection to IB - it connects to 4 lines down!
@@ -21,10 +34,16 @@ class ViewController: UIViewController {
         
         createParticles() //L2
         loadCards()//C2
+        playMusic()//N4
         
         view.backgroundColor = UIColor.red
         UIView.animate(withDuration: 20, delay: 0, options: [.allowUserInteraction, .autoreverse, .repeat], animations: {self.view.backgroundColor = UIColor.blue}) //J
         
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }//P2
     }
     
     @objc func loadCards() {
@@ -130,6 +149,49 @@ class ViewController: UIViewController {
         gradientView.layer.addSublayer(particleEmitter)
     } //L
     
+    func playMusic() {
+        if let musicURL = Bundle.main.url(forResource: "PhantomFromSpace", withExtension: "mp3") {
+            if let audioPlayer = try? AVAudioPlayer(contentsOf: musicURL) {
+                music = audioPlayer
+                music.numberOfLoops = -1
+                music.play()
+            }
+        }
+    } //N3
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
+        guard let touch = touches.first else { return }
+            let location = touch.location(in: cardContainer)
+            for card in allCards {
+                if card.view.frame.contains(location) {
+                    if view.traitCollection.forceTouchCapability == .available {
+                        if touch.force == touch.maximumPossibleForce {
+                            card.front.image = UIImage(named: "cardStar")
+                            card.isCorrect = true
+                        }
+                    }
+                    if card.isCorrect {
+                        sendWatchMessage() //Q2
+                    }
+                }
+            }
+        } //O
+
+    func sendWatchMessage() {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        //if less than half a second has passed, bailout
+        if lastMessage + 0.5 > currentTime { return }
+        
+        //send a message to the watch if it is reachable
+        if (WCSession.default.isReachable) {
+            //this is a meaningless message, but it's enough for our purposes
+            let message = ["Message": "Hello"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+        //update our rate limiting property
+        lastMessage = CFAbsoluteTimeGetCurrent()
+    } //Q1
 }
 
