@@ -22,6 +22,7 @@
 		37082447245D0B160003E700 /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37082445245D0B160003E700 /* PhantomFromSpace.mp3 */; };
 		37082448245D0B160003E700 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 37082446245D0B160003E700 /* README.txt */; };
 		3708244A245D12610003E700 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37082449245D12610003E700 /* CardViewController.swift */; };
+		37DCD8ED245E4CFC003BED13 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DCD8EC245E4CFC003BED13 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		37082445245D0B160003E700 /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		37082446245D0B160003E700 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		37082449245D12610003E700 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		37DCD8EC245E4CFC003BED13 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		37082401245D0A8C0003E700 = {
 			isa = PBXGroup;
 			children = (
+				37DCD8EC245E4CFC003BED13 /* GradientView.swift */,
 				3708240C245D0A8C0003E700 /* Project37 */,
 				37082420245D0A8F0003E700 /* Project37 WatchKit App */,
 				3708242F245D0A900003E700 /* Project37 WatchKit Extension */,
@@ -307,6 +310,7 @@
 			files = (
 				37082410245D0A8C0003E700 /* ViewController.swift in Sources */,
 				3708240E245D0A8C0003E700 /* AppDelegate.swift in Sources */,
+				37DCD8ED245E4CFC003BED13 /* GradientView.swift in Sources */,
 				3708244A245D12610003E700 /* CardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

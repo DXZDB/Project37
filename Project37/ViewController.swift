@@ -10,13 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var cardContainer: UIView!
+    @IBOutlet var gradientView: GradientView!
     
+    
+    //WTF when you delete something from a connection to IB - it connects to 4 lines down!
     var allCards = [CardViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadCards()
+        createParticles() //L2
+        loadCards()//C2
+        
+        view.backgroundColor = UIColor.red
+        UIView.animate(withDuration: 20, delay: 0, options: [.allowUserInteraction, .autoreverse, .repeat], animations: {self.view.backgroundColor = UIColor.blue}) //J
+        
     }
     
     @objc func loadCards() {
@@ -24,7 +32,9 @@ class ViewController: UIViewController {
         for card in allCards {
             card.view.removeFromSuperview()
             card.removeFromParent()
-        }
+        }//C3
+        
+        view.isUserInteractionEnabled = true //G
         
         allCards.removeAll(keepingCapacity: true)
         
@@ -73,11 +83,53 @@ class ViewController: UIViewController {
             //add the new card view controller to our array for easier tracking
             allCards.append(card)
             
-        }
+        } //C
         
     }
+
+    func cardTapped(_ tapped: CardViewController) {
+        guard view.isUserInteractionEnabled == true else {
+            return
+        }
+        view.isUserInteractionEnabled = false
+        
+        for card in allCards {
+            if card == tapped {
+                card.wasTapped()
+                card.perform(#selector(card.wasntTapped), with: nil, afterDelay: 1)
+            } else {
+                card.wasntTapped()
+            }
+        }
+        perform(#selector(loadCards), with: nil, afterDelay: 2)
+        //F
+    }
     
-
-
+    func createParticles() {
+        let particleEmitter = CAEmitterLayer()
+        
+        particleEmitter.emitterPosition = CGPoint(x: view.frame.width / 2.0, y: -50)
+        particleEmitter.emitterShape = .line
+        particleEmitter.emitterSize = CGSize(width: view.frame.width, height: 1)
+        particleEmitter.renderMode = .additive
+        
+        let cell = CAEmitterCell()
+        cell.birthRate = 2
+        cell.lifetime = 5.0
+        cell.velocity = 100
+        cell.velocityRange = 50
+        cell.emissionLongitude = .pi
+        cell.spinRange = 5
+        cell.scale = 0.5
+        cell.scaleRange = 0.25
+        cell.color = UIColor(white: 1, alpha: 0.6).cgColor
+        cell.alphaSpeed = -0.025
+        cell.contents = UIImage(named: "particle")?.cgImage
+        particleEmitter.emitterCells = [cell]
+        
+        gradientView.layer.addSublayer(particleEmitter)
+    } //L
+    
+    
 }
 
