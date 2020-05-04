@@ -193,5 +193,17 @@ class ViewController: UIViewController, WCSessionDelegate { //P3
         //update our rate limiting property
         lastMessage = CFAbsoluteTimeGetCurrent()
     } //Q1
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let instructions = "Please make sure your Apple Watch is set up: 1) in the iPhone Watch app - General/Wake Screen a) disable 'Wake screen on Wrist Raise' b) select 'Wake for 70 seconds' 2) on the watch swipe up and select silent mode (Bell)"
+    
+        let ac = UIAlertController(title: "Adjust your settings", message: instructions, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "I'm Ready!", style: .default))
+    
+        present(ac, animated: true) //T
+        
+    }
 }
 
