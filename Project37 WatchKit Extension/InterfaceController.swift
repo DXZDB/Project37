@@ -17,11 +17,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate { //R3
     
     @IBOutlet var welcomeText: WKInterfaceLabel!
     @IBOutlet var hideButton: WKInterfaceButton!
+    @IBOutlet var resetButton: WKInterfaceButton!
     
     @IBAction func hideWelcomeText() {
         welcomeText.setHidden(true)
         hideButton.setHidden(true)
     } //S1
+    
+    @IBAction func deactivate() {
+        hideButton.setHidden(false)
+        func session(_ session: WCSession, ) {
+        } //S2
+    }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -48,7 +55,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate { //R3
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+       WKInterfaceDevice().play(.click)
         WKInterfaceDevice().play(.click)
+
     } //S3
 
 }

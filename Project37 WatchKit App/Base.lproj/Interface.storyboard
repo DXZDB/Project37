@@ -14,15 +14,21 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Project37_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Please read the instructions on your iPhone before continuing..." textAlignment="center" numberOfLines="0" id="CdC-7h-b8j"/>
+                        <label alignment="center" text="read on iPhone before continuing..." textAlignment="center" numberOfLines="3" id="CdC-7h-b8j"/>
                         <button width="1" alignment="left" title="I'm Ready!" id="sj4-BT-EW5">
                             <connections>
                                 <action selector="hideWelcomeText" destination="AgC-eL-Hgc" id="bpg-Y7-dsD"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="?" id="o64-Kp-DKS">
+                            <connections>
+                                <action selector="deactivate" destination="AgC-eL-Hgc" id="mR1-Ic-ozy"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="hideButton" destination="sj4-BT-EW5" id="vmU-Sm-rnb"/>
+                        <outlet property="resetButton" destination="o64-Kp-DKS" id="K83-aw-uEr"/>
                         <outlet property="welcomeText" destination="CdC-7h-b8j" id="jx7-Bs-Yaw"/>
                     </connections>
                 </controller>
