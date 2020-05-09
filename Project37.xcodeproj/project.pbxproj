@@ -19,9 +19,9 @@
 		37082431245D0A900003E700 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37082430245D0A900003E700 /* InterfaceController.swift */; };
 		37082433245D0A900003E700 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37082432245D0A900003E700 /* ExtensionDelegate.swift */; };
 		37082435245D0A900003E700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37082434245D0A900003E700 /* Assets.xcassets */; };
-		37082447245D0B160003E700 /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37082445245D0B160003E700 /* PhantomFromSpace.mp3 */; };
 		37082448245D0B160003E700 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 37082446245D0B160003E700 /* README.txt */; };
 		3708244A245D12610003E700 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37082449245D12610003E700 /* CardViewController.swift */; };
+		3762861A246665F300F9B007 /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37628619246665F300F9B007 /* PhantomFromSpace.mp3 */; };
 		37DCD8ED245E4CFC003BED13 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DCD8EC245E4CFC003BED13 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,9 +84,9 @@
 		37082432245D0A900003E700 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		37082434245D0A900003E700 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37082436245D0A900003E700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37082445245D0B160003E700 /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		37082446245D0B160003E700 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		37082449245D12610003E700 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		37628619246665F300F9B007 /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		37DCD8EC245E4CFC003BED13 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,7 +139,8 @@
 				37082414245D0A8F0003E700 /* Assets.xcassets */,
 				37082416245D0A8F0003E700 /* LaunchScreen.storyboard */,
 				37082419245D0A8F0003E700 /* Info.plist */,
-				37082444245D0B160003E700 /* Content */,
+				37628619246665F300F9B007 /* PhantomFromSpace.mp3 */,
+				37082446245D0B160003E700 /* README.txt */,
 			);
 			path = Project37;
 			sourceTree = "<group>";
@@ -163,15 +164,6 @@
 				37082436245D0A900003E700 /* Info.plist */,
 			);
 			path = "Project37 WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		37082444245D0B160003E700 /* Content */ = {
-			isa = PBXGroup;
-			children = (
-				37082445245D0B160003E700 /* PhantomFromSpace.mp3 */,
-				37082446245D0B160003E700 /* README.txt */,
-			);
-			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37082418245D0A8F0003E700 /* LaunchScreen.storyboard in Resources */,
+				3762861A246665F300F9B007 /* PhantomFromSpace.mp3 in Resources */,
 				37082415245D0A8F0003E700 /* Assets.xcassets in Resources */,
 				37082413245D0A8C0003E700 /* Main.storyboard in Resources */,
 			);
@@ -297,7 +290,6 @@
 			files = (
 				37082435245D0A900003E700 /* Assets.xcassets in Resources */,
 				37082448245D0B160003E700 /* README.txt in Resources */,
-				37082447245D0B160003E700 /* PhantomFromSpace.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
