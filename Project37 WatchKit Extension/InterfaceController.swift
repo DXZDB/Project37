@@ -26,8 +26,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate { //R3
     
     @IBAction func deactivate() {
         hideButton.setHidden(false)
-        func session(_ session: WCSession, ) {
-        } //S2
+  
     }
     
     override func awake(withContext context: Any?) {
@@ -55,7 +54,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate { //R3
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-       WKInterfaceDevice().play(.click)
+       WKInterfaceDevice().play(.success)
         WKInterfaceDevice().play(.click)
 
     } //S3
